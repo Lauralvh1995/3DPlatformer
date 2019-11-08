@@ -9,8 +9,7 @@ namespace Assets.Scripts.ScriptableObjects
 {
     public abstract class Equipment : Item
     {
-        public Transform attachPoint;
-        public Mesh mesh;
+        public SkinnedMeshRenderer mesh;
 
         public int strBonus;
         public int intBonus;
