@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
+    public int level;
     public int strength;
     public int intelligence;
     public int dexterity;
@@ -37,7 +38,10 @@ public class Player : Entity
     {
         SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
     }
-
+    public int getLvl()
+    {
+        return level;
+    }
     public int getStr()
     {
         return strength;

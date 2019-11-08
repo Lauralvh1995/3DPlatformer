@@ -23,47 +23,70 @@ namespace Assets.Scripts.ScriptableObjects
         public int intReq;
         public int dexReq;
         public int conReq;
+        public int lvlReq;
 
         public List<DamageBonus> bonuses;
 
         public EquipmentSlots slot;
 
-        public void Equip(Player p)
+        public void Equip(Entity e)
         {
-            if(p.getStr() >= strReq && p.getInt() >= intReq && p.getDex() >= dexReq && p.getCon() >= conReq)
+            if (e is Player)
             {
-                p.maxHP += hpBonus;
-                p.maxMP += mpBonus;
-                p.strength += strBonus;
-                p.intelligence += intBonus;
-                p.dexterity += dexBonus;
-                p.constitution += conBonus;
-                
-                foreach(DamageBonus bonus in bonuses)
+                Player p = e as Player;
+                if (p.getStr() >= strReq && p.getInt() >= intReq && p.getDex() >= dexReq && p.getCon() >= conReq && p.getLvl() > lvlReq)
                 {
-                    if (bonus != null)
+                    p.maxHP += hpBonus;
+                    p.maxMP += mpBonus;
+                    p.strength += strBonus;
+                    p.intelligence += intBonus;
+                    p.dexterity += dexBonus;
+                    p.constitution += conBonus;
+
+                    foreach (DamageBonus bonus in bonuses)
                     {
-                        p.damageBonuses.Add(bonus);
+                        if (bonus != null)
+                        {
+                            p.damageBonuses.Add(bonus);
+                        }
                     }
+                }
+                else
+                {
+                    Debug.Log("You do not have the required prerequisites");
+                    return;
                 }
             }
             else
             {
-                Debug.Log("You do not have the required prerequisites");
+                e.maxHP += hpBonus;
+                e.maxMP += mpBonus;
+                foreach (DamageBonus bonus in bonuses)
+                {
+                    if (bonus != null)
+                    {
+                        e.damageBonuses.Add(bonus);
+                    }
+                }
             }
+            
         }
 
-        public void Unequip(Player p)
+        public void Unequip(Entity e)
         {
-            p.maxHP -= hpBonus;
-            p.maxMP -= mpBonus;
-            p.strength -= strBonus;
-            p.intelligence -= intBonus;
-            p.dexterity -= dexBonus;
-            p.constitution -= conBonus;
+            e.maxHP -= hpBonus;
+            e.maxMP -= mpBonus;
+            if (e is Player)
+            {
+                Player p = e as Player;
+                p.strength -= strBonus;
+                p.intelligence -= intBonus;
+                p.dexterity -= dexBonus;
+                p.constitution -= conBonus;
+            }
             foreach (DamageBonus bonus in bonuses)
             {
-                p.damageBonuses.Remove(bonus);
+                e.damageBonuses.Remove(bonus);
             }
         }
     }
