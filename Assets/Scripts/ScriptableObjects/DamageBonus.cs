@@ -11,5 +11,7 @@ namespace Assets.Scripts.ScriptableObjects
     {
         public DamageType damageType;
         public int bonus;
+        public bool timed;
+        public int timerSeconds;
     }
 }

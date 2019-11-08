@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8361103590124449829}
   - component: {fileID: 8361103590124449832}
   m_Layer: 0
-  m_Name: BoltProjectile 1
+  m_Name: FireBoltProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageType: 2
   projectileType: 0
-  Damage: 5
+  Damage: 0
   speed: 0
   radius: 0.5
   homing: 0
@@ -72,7 +72,6 @@ MonoBehaviour:
     m_Bits: 512
   meshAgent: {fileID: 8361103590124449832}
   target: {x: 0, y: 0, z: 0}
-  range: 0
 --- !u!195 &8361103590124449832
 NavMeshAgent:
   m_ObjectHideFlags: 0

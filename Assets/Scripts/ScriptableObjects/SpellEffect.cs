@@ -14,7 +14,6 @@ namespace Assets.Scripts.ScriptableObjects
         public List<Rune> requiredRunes;
         public string description;
         public int MPCost;
-        public int range;
         public int damage;
 
         public GameObject toBeSpawned;
