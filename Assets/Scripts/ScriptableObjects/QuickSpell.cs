@@ -10,7 +10,8 @@ namespace Assets.Scripts.ScriptableObjects
     {
         public override void Cast()
         {
-            //Do thing
+            int damage = GameManager.instance.player.getInt() / 2  + GameManager.instance.player.getBonus(DamageType.Magical);
+            effect.Execute(GameManager.instance.player, damage);
         }
     }
 }

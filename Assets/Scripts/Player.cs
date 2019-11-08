@@ -13,6 +13,7 @@ public class Player : Entity
     public int constitution;
 
     public List<Item> inventory;
+    public List<DamageBonus> damageBonuses;
 
     public Light ghostLight;
     // Start is called before the first frame update
@@ -45,5 +46,17 @@ public class Player : Entity
     public int getCon()
     {
         return constitution;
+    }
+    public int getBonus(DamageType type)
+    {
+        int i = 0;
+        foreach(DamageBonus db in damageBonuses)
+        {
+            if(db.damageType == type)
+            {
+                i += db.bonus;
+            }
+        }
+        return i;
     }
 }

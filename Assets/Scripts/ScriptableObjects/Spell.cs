@@ -12,6 +12,7 @@ namespace Assets.Scripts.ScriptableObjects
         public new string name;
         public int size = 3;
         List<Rune> runes;
+        protected SpellEffect effect;
 
         private void Start()
         {
@@ -37,6 +38,19 @@ namespace Assets.Scripts.ScriptableObjects
                 rune.SetInUse(false);
                 runes.Remove(rune);
             }
+        }
+
+        public bool FinishSpell()
+        {
+            foreach(SpellEffect se in GameManager.instance.spellEffects)
+            {
+                if (runes.All(x => se.requiredRunes.Any(y => x.name == y.name)))
+                {
+                    effect = se;
+                    return true;
+                }
+            }
+            return false;
         }
 
         public abstract void Cast();
