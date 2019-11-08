@@ -26,6 +26,8 @@ namespace Assets.Scripts.ScriptableObjects
 
         public List<DamageBonus> bonuses;
 
+        public EquipmentSlots slot;
+
         public void Equip(Player p)
         {
             if(p.getStr() >= strReq && p.getInt() >= intReq && p.getDex() >= dexReq && p.getCon() >= conReq)
@@ -36,8 +38,14 @@ namespace Assets.Scripts.ScriptableObjects
                 p.intelligence += intBonus;
                 p.dexterity += dexBonus;
                 p.constitution += conBonus;
-                //yet to be implemented
-                //add bonuses
+                
+                foreach(DamageBonus bonus in bonuses)
+                {
+                    if (bonus != null)
+                    {
+                        p.damageBonuses.Add(bonus);
+                    }
+                }
             }
             else
             {
@@ -53,8 +61,10 @@ namespace Assets.Scripts.ScriptableObjects
             p.intelligence -= intBonus;
             p.dexterity -= dexBonus;
             p.constitution -= conBonus;
-            //yet to be implemented
-            //remove bonuses
+            foreach (DamageBonus bonus in bonuses)
+            {
+                p.damageBonuses.Remove(bonus);
+            }
         }
     }
 }

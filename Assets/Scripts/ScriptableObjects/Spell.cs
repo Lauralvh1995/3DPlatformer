@@ -7,18 +7,18 @@ using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects
 {
-    public abstract class Spell : MonoBehaviour
+    public abstract class Spell : ScriptableObject
     {
         public new string name;
-        public int size = 3;
-        List<Rune> runes;
-        protected SpellEffect effect;
+        int size = 3;
+        public List<Rune> runes;
+        public SpellEffect effect;
 
-        private void Start()
+        public Spell()
         {
             runes = new List<Rune>(size);
+            
         }
-
         public void AddRune(Rune rune)
         {
             if (!rune.IsInUse() && runes.Count < 3)

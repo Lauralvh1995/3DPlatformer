@@ -62,7 +62,6 @@ public class PlayerMovement : MonoBehaviour
         // update the animator parameters
         m_Animator.SetFloat("Forward", move.magnitude * movementSpeed *2f, 0.1f, Time.deltaTime);
         m_Animator.SetFloat("Turn", 0f, 0.1f, Time.deltaTime);
-        //m_Animator.SetBool("Crouch", m_Crouching);
         m_Animator.SetBool("OnGround", isGrounded);
         if (!isGrounded)
         {

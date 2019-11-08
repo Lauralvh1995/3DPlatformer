@@ -3187,6 +3187,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1257092107}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &230794486 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400270, guid: b235179bd2a63d1468dd430670338c55,
+    type: 3}
+  m_PrefabInstance: {fileID: 1606287808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &230799535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9081823155962883182, guid: 087baeb0c6f394f419d64029b1e7cf87,
@@ -16701,6 +16707,10 @@ MonoBehaviour:
   spellEffects:
   - {fileID: 11400000, guid: 70b7e7ef30ccb3949b45767e11f1b801, type: 2}
   player: {fileID: 1376587580}
+  weaponAttachPoint: {fileID: 230794486}
+  defaultEquipment:
+  - {fileID: 11400000, guid: 8bcc9e2c1cfc93e4ea00e530a6a31eda, type: 2}
+  - {fileID: 11400000, guid: 33968261989e39a4c8f770323be123aa, type: 2}
 --- !u!4 &1242803480
 Transform:
   m_ObjectHideFlags: 0
@@ -19687,17 +19697,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c911409ea1fc1ce4d99cf5d87ef6c2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
-  HP: 10
-  maxMP: 0
-  MP: 10
-  strength: 0
-  intelligence: 0
-  dexterity: 0
-  constitution: 0
-  inventory: []
+  maxHP: 100
+  HP: 100
+  maxMP: 50
+  MP: 50
   damageBonuses: []
-  ghostLight: {fileID: 0}
+  equipment:
+  - {fileID: 11400000, guid: 8bcc9e2c1cfc93e4ea00e530a6a31eda, type: 2}
+  strength: 5
+  intelligence: 5
+  dexterity: 5
+  constitution: 5
+  inventory: []
+  ghostLight: {fileID: 1300255702}
 --- !u!208 &1376587581
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -24503,6 +24515,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1789026489}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1654464245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654464246}
+  m_Layer: 0
+  m_Name: Flying Skull
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1654464246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654464245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1664028745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7222038706721076198, guid: aca9d740a68236944a278360cb3fda17,

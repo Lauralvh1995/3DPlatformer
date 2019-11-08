@@ -15,27 +15,44 @@ namespace Assets.Scripts.ScriptableObjects
         public string description;
         public int MPCost;
         public int damage;
+        public SpellType type;
 
         public GameObject toBeSpawned;
-        public void Execute(Player player, int damageBonus)
+        public void Execute(Vector3 origin, int damageBonus)
         {
-            if(toBeSpawned != null)
+            switch (type)
             {
-                if(toBeSpawned.GetComponent<Projectile>())
-                {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit))
+                case SpellType.Projectile:
+                    if (toBeSpawned != null)
                     {
-                        Vector3 target = hit.point;
-                        target.y = player.gameObject.transform.position.y;
-                        toBeSpawned.GetComponent<Projectile>().Damage = damage + damageBonus;
-                        toBeSpawned.GetComponent<Projectile>().target = target;
-                    }
+                        if (toBeSpawned.GetComponent<Projectile>())
+                        {
+                            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                            RaycastHit hit;
+                            if (Physics.Raycast(ray, out hit))
+                            {
+                                Vector3 target = hit.point;
+                                target.y = origin.y;
+                                toBeSpawned.GetComponent<Projectile>().Damage = damage + damageBonus;
+                                toBeSpawned.GetComponent<Projectile>().target = target;
+                            }
 
-                }
-                Instantiate(toBeSpawned, player.transform);
+                        }
+
+                        Instantiate(toBeSpawned, origin, Quaternion.LookRotation(origin));
+                    }
+                    break;
+                case SpellType.Buff:
+                    break;
+                case SpellType.Debuff:
+                    break;
+                case SpellType.Summon:
+                    break;
+                case SpellType.Other:
+                    break;
+
             }
+
         }
     }
 }

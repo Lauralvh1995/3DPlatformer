@@ -13,18 +13,25 @@ public class Player : Entity
     public int constitution;
 
     public List<Item> inventory;
-    public List<DamageBonus> damageBonuses;
 
     public Light ghostLight;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        int numSlots = System.Enum.GetNames(typeof(EquipmentSlots)).Length;
+        equipment = new Equipment[numSlots];
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if(equipment[0] is Weapon)
+            {
+                Weapon w = equipment[0] as Weapon;
+                w.UseQuickSpell();
+            }
+        }
     }
     public override void Die()
     {
@@ -47,16 +54,16 @@ public class Player : Entity
     {
         return constitution;
     }
-    public int getBonus(DamageType type)
+    public override void Equip(Equipment e)
     {
-        int i = 0;
-        foreach(DamageBonus db in damageBonuses)
+        int slot = (int)e.slot;
+        if (equipment[slot] != null)
         {
-            if(db.damageType == type)
-            {
-                i += db.bonus;
-            }
+            inventory.Add(equipment[slot]);
+            equipment[slot].Unequip(this);
+            equipment[slot] = null;
         }
-        return i;
+        equipment[slot] = e;
+        equipment[slot].Equip(this);
     }
 }

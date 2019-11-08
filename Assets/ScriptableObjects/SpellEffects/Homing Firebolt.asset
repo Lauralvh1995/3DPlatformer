@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b629197cc7c58744da67c929f9117608, type: 3}
+  m_Name: Homing Firebolt
+  m_EditorClassIdentifier: 
+  name: Firebolt-Homing
+  requiredRunes:
+  - {fileID: 11400000, guid: 064d9b5fb6dfb674ea03991e59113466, type: 2}
+  - {fileID: 11400000, guid: 63ff25d73e2dddb4ab8e000425d81d37, type: 2}
+  - {fileID: 11400000, guid: 263c017c5c7bab442b14fad2a58acdd0, type: 2}
+  description: Create a homing firebolt
+  MPCost: 7
+  damage: 5
+  toBeSpawned: {fileID: 8361103590124449828, guid: 0300441890e6b664cb1d9fb31f318fe5,
+    type: 3}

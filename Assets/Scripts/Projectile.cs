@@ -20,37 +20,28 @@ public class Projectile : MonoBehaviour
     public Vector3 target;
     public void Start()
     {
-        if (target != null)
+        Debug.Log(target);
+        if (target != null && homing)
         {
+            meshAgent.speed = 10 * speed;
             meshAgent.SetDestination(target);
         }
-        Damage += GameManager.instance.player.getBonus(damageType);
+        Damage += GameManager.instance.player.GetBonus(damageType);
     }
     private void Update()
     {
         if (!homing)
         {
-            if (projectileType == ProjectileType.Ball)
-            {
-                transform.Translate(target * Time.deltaTime * speed, Space.World);
-                if(transform.position == target)
-                {
-                    Explode();
-                }
-
-            }
-            if (projectileType == ProjectileType.Bolt)
-            {
-                transform.Translate(target * Time.deltaTime * speed, Space.World);
-            }
+            transform.position = Vector3.MoveTowards(transform.position, target, 10f * speed * Time.deltaTime);
         }
-        else if(meshAgent.remainingDistance < 0.5f)
+        Debug.Log(name + " - My current position: " + transform.position);
+        if (Vector3.Distance(transform.position, target) < 0.1f)
         {
             if (projectileType == ProjectileType.Ball)
             {
                 Explode();
             }
-            if (projectileType == ProjectileType.Bolt)
+            else
             {
                 Destroy(gameObject);
             }
@@ -79,6 +70,7 @@ public class Projectile : MonoBehaviour
     {
         //Explode on impact
         Collider[] enemies = Physics.OverlapSphere(transform.position, radius, enemyMask);
+        Debug.Log(enemies);
         foreach (Collider enemy in enemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(2 * Damage / enemies.Length);

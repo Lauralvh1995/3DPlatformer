@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4842a637c9c6848afca934d72493e9, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  name: Fireball
+  runes:
+  - {fileID: 11400000, guid: 064d9b5fb6dfb674ea03991e59113466, type: 2}
+  - {fileID: 11400000, guid: d951d191b59f2ce44943c6f39fd75d21, type: 2}
+  effect: {fileID: 11400000, guid: 0258f1b547ed1034b81ece5233bd2bdd, type: 2}

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d668a8b6e07142e46a0be41283a8db70, type: 3}
+  m_Name: Wand
+  m_EditorClassIdentifier: 
+  Name: Flame Wand
+  description: A simple wand that casts firebolt
+  attachPoint: {fileID: 0}
+  mesh: {fileID: 0}
+  strBonus: 0
+  intBonus: 1
+  dexBonus: 0
+  conBonus: 0
+  hpBonus: 0
+  mpBonus: 1
+  strReq: 0
+  intReq: 1
+  dexReq: 0
+  conReq: 0
+  bonuses:
+  - {fileID: 11400000, guid: cee184e3a87d73c48a022548f93a2301, type: 2}
+  slot: 0
+  damage: 1
+  oneHanded: 1
+  spellFocus: 1
+  quickSpell: {fileID: 11400000, guid: 4dc26995492e97f458360bf112c5fdb3, type: 2}

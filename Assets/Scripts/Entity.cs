@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.ScriptableObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,14 @@ namespace Assets.Scripts
         public int maxMP;
         public int MP;
 
-        // Start is called before the first frame update
-        void Start()
-        {
+        public List<DamageBonus> damageBonuses;
 
+        public Equipment[] equipment;
+
+        // Start is called before the first frame update
+        void Awake()
+        {
+            damageBonuses = new List<DamageBonus>();
         }
 
         // Update is called once per frame
@@ -28,7 +33,10 @@ namespace Assets.Scripts
                 Die();
             }
         }
-
+        public void TakeDamage(int damage)
+        {
+            HP -= damage;
+        }
         public void Kill()
         {
             HP = 0;
@@ -50,5 +58,32 @@ namespace Assets.Scripts
             return maxMP;
         }
         public abstract void Die();
+
+        public int GetBonus(DamageType type)
+        {
+            int i = 0;
+            foreach (DamageBonus db in damageBonuses)
+            {
+                if (db != null)
+                {
+                    if (db.damageType == type)
+                    {
+                        i += db.bonus;
+                    }
+                }
+            }
+            return i;
+        }
+
+        public Weapon GetWeapon()
+        {
+            return equipment[0] as Weapon;
+        }
+
+        public virtual void Equip(Equipment e)
+        {
+            int slot = (int)e.slot;
+            equipment[slot] = e;
+        }
     }
 }

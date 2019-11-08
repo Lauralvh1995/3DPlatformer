@@ -18,6 +18,7 @@ namespace Assets.Scripts.ScriptableObjects
             {
                 quickSpell = null;
             }
+            attachPoint = GameManager.instance.weaponAttachPoint;
         }
 
         // Update is called once per frame
@@ -26,7 +27,7 @@ namespace Assets.Scripts.ScriptableObjects
 
         }
         
-        void UseQuickSpell()
+        public void UseQuickSpell()
         {
             if(quickSpell != null)
             {

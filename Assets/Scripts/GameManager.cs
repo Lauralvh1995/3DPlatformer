@@ -22,5 +22,19 @@ namespace Assets.Scripts
         public List<SpellEffect> spellEffects;
         public Player player;
 
+        public Transform weaponAttachPoint;
+
+        public Equipment[] defaultEquipment;
+
+        private void Start()
+        {
+            player = FindObjectOfType<Player>();
+
+            foreach(Equipment e in defaultEquipment)
+            {
+                player.Equip(e);
+            }
+        }
+
     }
 }

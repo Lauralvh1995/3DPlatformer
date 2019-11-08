@@ -8,10 +8,6 @@ namespace Assets.Scripts
 {
     public class Enemy : Entity
     {
-        public void TakeDamage(int damage)
-        {
-            HP -= damage;
-        }
         public override void Die()
         {
             //Do Death animation

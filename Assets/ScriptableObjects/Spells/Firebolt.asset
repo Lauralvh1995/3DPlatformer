@@ -9,16 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b629197cc7c58744da67c929f9117608, type: 3}
-  m_Name: New SpellEffect
+  m_Script: {fileID: 11500000, guid: 7f4842a637c9c6848afca934d72493e9, type: 3}
+  m_Name: Firebolt
   m_EditorClassIdentifier: 
-  name: Firebolt-Homing
-  requiredRunes:
+  name: Firebolt
+  runes:
   - {fileID: 11400000, guid: 064d9b5fb6dfb674ea03991e59113466, type: 2}
   - {fileID: 11400000, guid: 63ff25d73e2dddb4ab8e000425d81d37, type: 2}
-  - {fileID: 11400000, guid: 263c017c5c7bab442b14fad2a58acdd0, type: 2}
-  description: Create a homing firebolt
-  MPCost: 7
-  damage: 5
-  toBeSpawned: {fileID: 8361103590124449828, guid: 0300441890e6b664cb1d9fb31f318fe5,
-    type: 3}
+  effect: {fileID: 11400000, guid: 70b7e7ef30ccb3949b45767e11f1b801, type: 2}
