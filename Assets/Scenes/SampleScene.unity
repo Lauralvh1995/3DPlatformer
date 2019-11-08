@@ -19704,6 +19704,7 @@ MonoBehaviour:
   damageBonuses: []
   equipment:
   - {fileID: 11400000, guid: 8bcc9e2c1cfc93e4ea00e530a6a31eda, type: 2}
+  level: 1
   strength: 5
   intelligence: 5
   dexterity: 5
