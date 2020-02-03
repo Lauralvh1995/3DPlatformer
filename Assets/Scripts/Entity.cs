@@ -10,12 +10,8 @@ namespace Assets.Scripts
 {
     public abstract class Entity : MonoBehaviour
     {
-        public int maxHP;
-        public int HP;
-        public int maxMP;
-        public int MP;
-
         public List<DamageBonus> damageBonuses;
+        public List<EntityStat> stats;
 
         public Equipment[] equipment;
 
@@ -28,34 +24,35 @@ namespace Assets.Scripts
         // Update is called once per frame
         void Update()
         {
-            if (HP <= 0)
+            if (GetStat(Stat.HP).GetValue() <= 0)
             {
                 Die();
             }
         }
         public void TakeDamage(int damage)
         {
-            HP -= damage;
+            int currentHP = GetStat(Stat.HP).GetValue() - damage;
+            GetStat(Stat.HP).SetValue(currentHP);
         }
         public void Kill()
         {
-            HP = 0;
+            GetStat(Stat.HP).SetValue(0);
         }
         public int getHP()
         {
-            return HP;
+            return GetStat(Stat.HP).GetValue();
         }
         public int getMHP()
         {
-            return maxHP;
+            return GetStat(Stat.maxHP).GetValue();
         }
         public int getMP()
         {
-            return MP;
+            return GetStat(Stat.MP).GetValue();
         }
         public int getMMP()
         {
-            return maxMP;
+            return GetStat(Stat.maxMP).GetValue();
         }
         public abstract void Die();
 
@@ -84,6 +81,18 @@ namespace Assets.Scripts
         {
             int slot = (int)e.slot;
             equipment[slot] = e;
+        }
+
+        public EntityStat GetStat(Stat type)
+        {
+            foreach(EntityStat stat in stats)
+            {
+                if(stat.GetStat() == type)
+                {
+                    return stat;
+                }
+            }
+            return null;
         }
     }
 }

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Flame Wand
   description: A simple wand that casts firebolt
-  attachPoint: {fileID: 0}
   mesh: {fileID: 0}
   strBonus: 0
   intBonus: 1
@@ -26,10 +25,11 @@ MonoBehaviour:
   intReq: 1
   dexReq: 0
   conReq: 0
+  lvlReq: 0
   bonuses:
   - {fileID: 11400000, guid: cee184e3a87d73c48a022548f93a2301, type: 2}
   slot: 0
   damage: 1
   oneHanded: 1
   spellFocus: 1
-  quickSpell: {fileID: 11400000, guid: 4dc26995492e97f458360bf112c5fdb3, type: 2}
+  quickSpell: {fileID: 11400000, guid: c42a76b6d86e0a544a34b7cd6a5cb0a0, type: 2}

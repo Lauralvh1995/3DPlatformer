@@ -8,11 +8,6 @@ using UnityEngine.SceneManagement;
 public class Player : Entity
 {
     public int level;
-    public int strength;
-    public int intelligence;
-    public int dexterity;
-    public int constitution;
-
     public List<Item> inventory;
 
     public Light ghostLight;
@@ -44,19 +39,19 @@ public class Player : Entity
     }
     public int getStr()
     {
-        return strength;
+        return GetStat(Stat.Str).GetValue();
     }
     public int getInt()
     {
-        return intelligence;
+        return GetStat(Stat.Int).GetValue();
     }
     public int getDex()
     {
-        return dexterity;
+        return GetStat(Stat.Dex).GetValue();
     }
     public int getCon()
     {
-        return constitution;
+        return GetStat(Stat.Con).GetValue();
     }
     public override void Equip(Equipment e)
     {

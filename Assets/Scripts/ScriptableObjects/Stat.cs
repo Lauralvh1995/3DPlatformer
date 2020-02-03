@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
+
 namespace Assets.Scripts.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "New DamageBonus", menuName = "Items/DamageBonus")]
-    public class DamageBonus : Bonus
+    public enum Stat
     {
-        public DamageType damageType;
+        maxHP,
+        HP,
+        maxMP,
+        MP,
+        Str,
+        Con,
+        Dex,
+        Int,
+        AtkSpeed
     }
 }
