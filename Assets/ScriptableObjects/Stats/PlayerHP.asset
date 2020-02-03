@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9155cddb4a7b58c4c91156e98b09e9e0, type: 3}
-  m_Name: HP
+  m_Name: PlayerHP
   m_EditorClassIdentifier: 
   stat: 1
-  value: 0
+  value: 100
