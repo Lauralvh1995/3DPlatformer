@@ -7,10 +7,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects
 {
+    [CreateAssetMenu(fileName = "New Entity Stat", menuName = "Entity Stat")]
     public class EntityStat : ScriptableObject
     {
-        Stat stat;
-        int value;
+        public Stat stat;
+        public int value;
 
         public Stat GetStat()
         {

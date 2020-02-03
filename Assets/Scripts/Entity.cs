@@ -10,15 +10,20 @@ namespace Assets.Scripts
 {
     public abstract class Entity : MonoBehaviour
     {
-        public List<DamageBonus> damageBonuses;
+        public List<Bonus> Bonuses;
         public List<EntityStat> stats;
 
         public Equipment[] equipment;
 
+        public int defaultHP = 100;
+        public int defaultMP = 50;
+        public int defaultAtkSp = 1;
+
         // Start is called before the first frame update
         void Awake()
         {
-            damageBonuses = new List<DamageBonus>();
+            stats = new List<EntityStat>();
+            Bonuses = new List<Bonus>();
         }
 
         // Update is called once per frame
@@ -54,18 +59,54 @@ namespace Assets.Scripts
         {
             return GetStat(Stat.maxMP).GetValue();
         }
+
+        public void SetHP(int value)
+        {
+            GetStat(Stat.HP).SetValue(value);
+        }
+        public void SetMP(int value)
+        {
+            GetStat(Stat.MP).SetValue(value);
+        }
+        public void LoseMP(int value)
+        {
+            GetStat(Stat.MP).SetValue(getMP() - value);
+        }
         public abstract void Die();
 
-        public int GetBonus(DamageType type)
+        public int GetDamageBonus(DamageType type)
         {
             int i = 0;
-            foreach (DamageBonus db in damageBonuses)
+            foreach (Bonus bonus in Bonuses)
             {
-                if (db != null)
+                if (bonus != null)
                 {
-                    if (db.damageType == type)
+                    if (bonus is DamageBonus)
                     {
-                        i += db.bonus;
+                        DamageBonus db = bonus as DamageBonus;
+                        if (db.damageType == type)
+                        {
+                            i += db.bonus;
+                        }
+                    }
+                }
+            }
+            return i;
+        }
+        public int GetStatBonus(Stat type)
+        {
+            int i = 0;
+            foreach (Bonus bonus in Bonuses)
+            {
+                if (bonus != null)
+                {
+                    if (bonus is StatBonus)
+                    {
+                        StatBonus db = bonus as StatBonus;
+                        if (db.stat == type)
+                        {
+                            i += db.bonus;
+                        }
                     }
                 }
             }
@@ -93,6 +134,33 @@ namespace Assets.Scripts
                 }
             }
             return null;
+        }
+        public virtual void InitializeStats()
+        {
+            foreach (EntityStat stat in stats)
+            {
+                if (stat.GetStat() == Stat.maxHP)
+                {
+                    stat.SetValue(defaultHP);
+                }
+                if (stat.GetStat() == Stat.maxMP)
+                {
+                    stat.SetValue(defaultMP);
+                }
+                if (stat.GetStat() == Stat.HP)
+                {
+                    stat.SetValue(getMHP());
+                }
+                if (stat.GetStat() == Stat.MP)
+                {
+                    stat.SetValue(getMMP());
+                }
+                if (stat.GetStat() == Stat.AtkSpeed)
+                {
+                    stat.SetValue(defaultAtkSp);
+                }
+                Debug.Log(stat.GetStat() + ": " + stat.GetValue());
+            }
         }
     }
 }

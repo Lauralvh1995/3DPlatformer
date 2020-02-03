@@ -24,16 +24,23 @@ namespace Assets.Scripts
 
         public Transform weaponAttachPoint;
 
+        public EntityStat[] playerStats;
         public Equipment[] defaultEquipment;
 
         private void Start()
         {
             player = FindObjectOfType<Player>();
 
+            foreach(EntityStat s in playerStats)
+            {
+                player.stats.Add(s);
+            }
+            player.InitializeStats();
             foreach(Equipment e in defaultEquipment)
             {
                 player.Equip(e);
             }
+
         }
 
     }

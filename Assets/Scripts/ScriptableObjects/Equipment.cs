@@ -11,20 +11,13 @@ namespace Assets.Scripts.ScriptableObjects
     {
         public SkinnedMeshRenderer mesh;
 
-        public int strBonus;
-        public int intBonus;
-        public int dexBonus;
-        public int conBonus;
-        public int hpBonus;
-        public int mpBonus;
-
         public int strReq;
         public int intReq;
         public int dexReq;
         public int conReq;
         public int lvlReq;
 
-        public List<DamageBonus> bonuses;
+        public List<Bonus> bonuses;
 
         public EquipmentSlots slot;
 
@@ -35,18 +28,11 @@ namespace Assets.Scripts.ScriptableObjects
                 Player p = e as Player;
                 if (p.getStr() >= strReq && p.getInt() >= intReq && p.getDex() >= dexReq && p.getCon() >= conReq && p.getLvl() > lvlReq)
                 {
-                    p.maxHP += hpBonus;
-                    p.maxMP += mpBonus;
-                    p.strength += strBonus;
-                    p.intelligence += intBonus;
-                    p.dexterity += dexBonus;
-                    p.constitution += conBonus;
-
-                    foreach (DamageBonus bonus in bonuses)
+                    foreach (Bonus bonus in bonuses)
                     {
                         if (bonus != null)
                         {
-                            p.damageBonuses.Add(bonus);
+                            p.Bonuses.Add(bonus);
                         }
                     }
                 }
@@ -58,13 +44,11 @@ namespace Assets.Scripts.ScriptableObjects
             }
             else
             {
-                e.maxHP += hpBonus;
-                e.maxMP += mpBonus;
-                foreach (DamageBonus bonus in bonuses)
+                foreach (Bonus bonus in bonuses)
                 {
                     if (bonus != null)
                     {
-                        e.damageBonuses.Add(bonus);
+                        e.Bonuses.Add(bonus);
                     }
                 }
             }
@@ -73,19 +57,9 @@ namespace Assets.Scripts.ScriptableObjects
 
         public void Unequip(Entity e)
         {
-            e.maxHP -= hpBonus;
-            e.maxMP -= mpBonus;
-            if (e is Player)
+            foreach (Bonus bonus in bonuses)
             {
-                Player p = e as Player;
-                p.strength -= strBonus;
-                p.intelligence -= intBonus;
-                p.dexterity -= dexBonus;
-                p.constitution -= conBonus;
-            }
-            foreach (DamageBonus bonus in bonuses)
-            {
-                e.damageBonuses.Remove(bonus);
+                e.Bonuses.Remove(bonus);
             }
         }
     }

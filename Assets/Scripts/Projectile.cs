@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
             meshAgent.speed = 10 * speed;
             meshAgent.SetDestination(target);
         }
-        Damage += GameManager.instance.player.GetBonus(damageType);
+        Damage += GameManager.instance.player.GetDamageBonus(damageType);
     }
     private void Update()
     {

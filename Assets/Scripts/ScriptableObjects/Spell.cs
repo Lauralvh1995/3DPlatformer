@@ -13,10 +13,12 @@ namespace Assets.Scripts.ScriptableObjects
         int size = 3;
         public List<Rune> runes;
         public SpellEffect effect;
+        public int cost;
 
         public Spell()
         {
             runes = new List<Rune>(size);
+            cost = effect.MPCost;
             
         }
         public void AddRune(Rune rune)
@@ -47,6 +49,7 @@ namespace Assets.Scripts.ScriptableObjects
                 if (runes.All(x => se.requiredRunes.Any(y => x.name == y.name)))
                 {
                     effect = se;
+                    cost = effect.MPCost;
                     return true;
                 }
             }

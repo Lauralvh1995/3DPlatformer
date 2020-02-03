@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
+    public int defaultStr = 1;
+    public int defaultInt = 1;
+    public int defaultDex = 1;
+    public int defaultCon = 1;
+
     public int level;
     public List<Item> inventory;
 
@@ -25,7 +30,11 @@ public class Player : Entity
             if(equipment[0] is Weapon)
             {
                 Weapon w = equipment[0] as Weapon;
-                w.UseQuickSpell();
+                if (getMP() >= w.quickSpell.cost)
+                {
+                    w.UseQuickSpell();
+                    LoseMP(w.quickSpell.cost);
+                }
             }
         }
     }
@@ -64,5 +73,31 @@ public class Player : Entity
         }
         equipment[slot] = e;
         equipment[slot].Equip(this);
+    }
+
+    public override void InitializeStats()
+    {
+        base.InitializeStats();
+        foreach (EntityStat stat in stats)
+        {
+            if (stat.GetStat() == Stat.Str)
+            {
+                stat.SetValue(defaultStr);
+            }
+            if (stat.GetStat() == Stat.Int)
+            {
+                stat.SetValue(defaultInt);
+            }
+            if (stat.GetStat() == Stat.Con)
+            {
+                stat.SetValue(defaultCon);
+            }
+            if (stat.GetStat() == Stat.Dex)
+            {
+                stat.SetValue(defaultDex);
+            }
+
+            Debug.Log(stat.GetStat() + ": " + stat.GetValue());
+        }
     }
 }

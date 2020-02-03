@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.ScriptableObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,8 @@ namespace Assets.Scripts
         public override void Die()
         {
             //Do Death animation
-            HP = maxHP;
-            MP = maxMP;
+            GetStat(Stat.HP).SetValue(getMHP());
+            GetStat(Stat.MP).SetValue(getMMP());
             //return to enemy pool
         }
     }

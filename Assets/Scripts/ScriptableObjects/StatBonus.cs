@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "New DamageBonus", menuName = "Items/StatBonus")]
+    [CreateAssetMenu(fileName = "New StatBonus", menuName = "Items/StatBonus")]
     public class StatBonus : Bonus
     {
         public Stat stat;

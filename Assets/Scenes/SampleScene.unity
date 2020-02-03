@@ -12888,7 +12888,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1020492027
 MonoBehaviour:
   m_ObjectHideFlags: 19
@@ -16708,6 +16708,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70b7e7ef30ccb3949b45767e11f1b801, type: 2}
   player: {fileID: 1376587580}
   weaponAttachPoint: {fileID: 230794486}
+  playerStats:
+  - {fileID: 11400000, guid: 4dda30fb2197ffe41a3e99a604098229, type: 2}
+  - {fileID: 11400000, guid: 5dd37ee2a0f9ce44eb78307c7ccb4771, type: 2}
+  - {fileID: 11400000, guid: 1f2e05f899cf0e044b258c502c04c443, type: 2}
+  - {fileID: 11400000, guid: 88a3dc51e6f2c5c498d378ee92210f9c, type: 2}
+  - {fileID: 11400000, guid: 520ec617ac891de4b9b4630714750544, type: 2}
+  - {fileID: 11400000, guid: a3462c2ee654f0d4fbca171b824be1ee, type: 2}
+  - {fileID: 11400000, guid: d1c9dffc6295b1041bef177e86d9b055, type: 2}
+  - {fileID: 11400000, guid: e042b78a7a403a943b1d8579b2ddcb5e, type: 2}
+  - {fileID: 11400000, guid: 4af1410f034e52449b1d3d736c86eb36, type: 2}
   defaultEquipment:
   - {fileID: 11400000, guid: 8bcc9e2c1cfc93e4ea00e530a6a31eda, type: 2}
   - {fileID: 11400000, guid: 33968261989e39a4c8f770323be123aa, type: 2}
@@ -19697,20 +19707,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c911409ea1fc1ce4d99cf5d87ef6c2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  HP: 100
-  maxMP: 50
-  MP: 50
-  damageBonuses: []
-  equipment:
-  - {fileID: 11400000, guid: 8bcc9e2c1cfc93e4ea00e530a6a31eda, type: 2}
+  Bonuses: []
+  stats: []
+  equipment: []
+  defaultHP: 100
+  defaultMP: 50
+  defaultAtkSp: 1
+  defaultStr: 1
+  defaultInt: 1
+  defaultDex: 1
+  defaultCon: 1
   level: 1
-  strength: 5
-  intelligence: 5
-  dexterity: 5
-  constitution: 5
   inventory: []
-  ghostLight: {fileID: 1300255702}
+  ghostLight: {fileID: 0}
 --- !u!208 &1376587581
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -27054,7 +27063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1847340767
 MonoBehaviour:
   m_ObjectHideFlags: 19
