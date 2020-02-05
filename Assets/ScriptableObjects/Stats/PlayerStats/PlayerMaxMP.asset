@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerMaxMP
   m_EditorClassIdentifier: 
   stat: 2
-  value: 50
+  value: 55
