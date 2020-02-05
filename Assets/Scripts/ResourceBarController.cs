@@ -11,6 +11,9 @@ public class ResourceBarController : MonoBehaviour
     public Slider HPslider;
     public Slider MPslider;
 
+    public Text HPText;
+    public Text MPText;
+
     private void Start()
     {
         manager = GetComponent<GameManager>();
@@ -20,5 +23,8 @@ public class ResourceBarController : MonoBehaviour
     {
         HPslider.value = manager.player.getHP() / (float)manager.player.getMHP();
         MPslider.value = manager.player.getMP() / (float)manager.player.getMMP();
+
+        HPText.text = manager.player.getHP() + "/" + manager.player.getMHP();
+        MPText.text = manager.player.getMP() + "/" + manager.player.getMMP();
     }
 }

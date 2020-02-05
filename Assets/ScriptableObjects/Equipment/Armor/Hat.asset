@@ -14,20 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Hat
   description: A simple hat
-  attachPoint: {fileID: 0}
   mesh: {fileID: 0}
-  strBonus: 0
-  intBonus: 1
-  dexBonus: 0
-  conBonus: 0
-  hpBonus: 0
-  mpBonus: 1
   strReq: 0
   intReq: 0
   dexReq: 0
   conReq: 0
+  lvlReq: 0
   bonuses:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8f1c536c36a7ff04bbf18655eb73d2ac, type: 2}
+  - {fileID: 11400000, guid: afc8e86e6ec029e4aafc55cf690fa592, type: 2}
+  - {fileID: 11400000, guid: 1c4adfde5fa25e04ca52968054d5141d, type: 2}
   slot: 2
-  PhysicalDefenseBonus: 0
-  MagicalDefenseBonus: 0

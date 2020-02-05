@@ -20,7 +20,6 @@ public class Projectile : MonoBehaviour
     public Vector3 target;
     public void Start()
     {
-        Debug.Log(target);
         if (target != null && homing)
         {
             meshAgent.speed = 10 * speed;
@@ -34,7 +33,6 @@ public class Projectile : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, target, 10f * speed * Time.deltaTime);
         }
-        Debug.Log(name + " - My current position: " + transform.position);
         if (Vector3.Distance(transform.position, target) < 0.1f)
         {
             if (projectileType == ProjectileType.Ball)

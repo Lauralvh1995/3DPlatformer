@@ -52,7 +52,7 @@ namespace Assets.Scripts.ScriptableObjects
                     }
                 }
             }
-            
+            e.RecalculateStats();
         }
 
         public void Unequip(Entity e)
@@ -61,6 +61,7 @@ namespace Assets.Scripts.ScriptableObjects
             {
                 e.Bonuses.Remove(bonus);
             }
+            e.RecalculateStats();
         }
     }
 }

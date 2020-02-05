@@ -16,6 +16,11 @@ namespace Assets.Scripts.ScriptableObjects
         Con,
         Dex,
         Int,
-        AtkSpeed
+        AtkSpeed,
+        HPRegen,
+        MPRegen,
+        RegenSpeed,
+        PDef,
+        MDef
     }
 }

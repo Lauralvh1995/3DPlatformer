@@ -19,13 +19,6 @@ namespace Assets.Scripts.ScriptableObjects
                 quickSpell = null;
             }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-        
         public void UseQuickSpell()
         {
             if(quickSpell != null)

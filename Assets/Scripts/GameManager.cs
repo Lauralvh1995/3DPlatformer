@@ -36,11 +36,7 @@ namespace Assets.Scripts
                 player.stats.Add(s);
             }
             player.InitializeStats();
-            foreach(Equipment e in defaultEquipment)
-            {
-                player.Equip(e);
-            }
-
+            player.RecalculateStats();
         }
 
     }

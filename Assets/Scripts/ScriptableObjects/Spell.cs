@@ -18,8 +18,10 @@ namespace Assets.Scripts.ScriptableObjects
         public Spell()
         {
             runes = new List<Rune>(size);
-            cost = effect.MPCost;
-            
+            if (effect)
+            {
+                cost = effect.MPCost;
+            }
         }
         public void AddRune(Rune rune)
         {

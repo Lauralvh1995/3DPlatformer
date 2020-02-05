@@ -18,12 +18,26 @@ namespace Assets.Scripts
         public int defaultHP = 100;
         public int defaultMP = 50;
         public int defaultAtkSp = 1;
+        public int defaultHPRegen = 1;
+        public int defaultMPRegen = 1;
+        public int defaultRegenSpeed = 1;
+        public int defaultPDef = 1;
+        public int defaultMDef = 1;
 
+        float regenTime;
+        float regenTick;
+        float regenCounter;
         // Start is called before the first frame update
         void Awake()
         {
             stats = new List<EntityStat>();
             Bonuses = new List<Bonus>();
+        }
+
+        private void Start()
+        {
+            regenTime = getRegenSpeed() * 50f;
+            regenTick = getRegenSpeed() * 1f;
         }
 
         // Update is called once per frame
@@ -33,6 +47,7 @@ namespace Assets.Scripts
             {
                 Die();
             }
+            RegenCheck();
         }
         public void TakeDamage(int damage)
         {
@@ -58,6 +73,18 @@ namespace Assets.Scripts
         public int getMMP()
         {
             return GetStat(Stat.maxMP).GetValue();
+        }
+        public int getHPRegen()
+        {
+            return GetStat(Stat.HPRegen).GetValue();
+        }
+        public int getMPRegen()
+        {
+            return GetStat(Stat.MPRegen).GetValue();
+        }
+        public int getRegenSpeed()
+        {
+            return GetStat(Stat.RegenSpeed).GetValue();
         }
 
         public void SetHP(int value)
@@ -143,6 +170,14 @@ namespace Assets.Scripts
                 {
                     stat.SetValue(defaultHP);
                 }
+                if (stat.GetStat() == Stat.PDef)
+                {
+                    stat.SetValue(defaultPDef);
+                }
+                if (stat.GetStat() == Stat.MDef)
+                {
+                    stat.SetValue(defaultMDef);
+                }
                 if (stat.GetStat() == Stat.maxMP)
                 {
                     stat.SetValue(defaultMP);
@@ -159,8 +194,63 @@ namespace Assets.Scripts
                 {
                     stat.SetValue(defaultAtkSp);
                 }
-                Debug.Log(stat.GetStat() + ": " + stat.GetValue());
+                if (stat.GetStat() == Stat.HPRegen)
+                {
+                    stat.SetValue(defaultHPRegen);
+                }
+                if (stat.GetStat() == Stat.MPRegen)
+                {
+                    stat.SetValue(defaultMPRegen);
+                }
+                if(stat.GetStat() ==  Stat.RegenSpeed)
+                {
+                    stat.SetValue(defaultRegenSpeed);
+                }
             }
+        }
+        public void RecalculateStats()
+        {
+            InitializeStats();
+            foreach (Bonus b in Bonuses)
+            {
+                if(b is StatBonus)
+                {
+                    StatBonus sb = b as StatBonus;
+                    foreach(EntityStat stat in stats)
+                    {
+                        if(stat.GetStat() == sb.stat)
+                        {
+                            stat.AddValue(sb.bonus);
+                            Debug.Log("Added " + sb.bonus + " to " + stat.GetStat());
+                        }
+                    }
+                }
+            }
+        }
+        public void RegenCheck()
+        {
+            if (regenCounter <= 0)
+            {
+                if (getHP() < getMHP())
+                {
+                    GetStat(Stat.HP).AddValue(getHPRegen());
+                    if(getHP() > getMHP())
+                    {
+                        GetStat(Stat.HP).SetValue(getMHP());
+                    }
+                }
+
+                if (getMP() < getMMP())
+                {
+                    GetStat(Stat.MP).AddValue(getMPRegen());
+                    if (getMP() > getMMP())
+                    {
+                        GetStat(Stat.MP).SetValue(getMMP());
+                    }
+                }
+                regenCounter = regenTime;
+            }
+            regenCounter -= regenTick;
         }
     }
 }

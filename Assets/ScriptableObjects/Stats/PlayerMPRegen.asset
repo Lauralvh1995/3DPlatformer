@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d013a86c56202e458f773c1c01b6c3b, type: 3}
-  m_Name: FireBonusX
+  m_Script: {fileID: 11500000, guid: 9155cddb4a7b58c4c91156e98b09e9e0, type: 3}
+  m_Name: PlayerMPRegen
   m_EditorClassIdentifier: 
-  damageType: 2
-  bonus: 5
-  timed: 0
-  timerSeconds: 0
+  stat: 10
+  value: 0

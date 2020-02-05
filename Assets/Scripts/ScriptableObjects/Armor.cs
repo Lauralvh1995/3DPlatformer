@@ -10,7 +10,6 @@ namespace Assets.Scripts.ScriptableObjects
     [CreateAssetMenu(fileName ="New Armor", menuName = "Items/Armor")]
     public class Armor : Equipment
     {
-        public int PhysicalDefenseBonus;
-        public int MagicalDefenseBonus;
+        
     }
 }

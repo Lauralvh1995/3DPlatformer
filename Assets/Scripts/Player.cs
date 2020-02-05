@@ -25,6 +25,7 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if(equipment[0] is Weapon)
@@ -37,6 +38,14 @@ public class Player : Entity
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            foreach (Equipment e in GameManager.instance.defaultEquipment)
+            {
+                Equip(e);
+            }
+        }
+        RegenCheck();
     }
     public override void Die()
     {

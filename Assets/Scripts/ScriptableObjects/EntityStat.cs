@@ -27,5 +27,10 @@ namespace Assets.Scripts.ScriptableObjects
         {
             value = _value;
         }
+
+        public void AddValue(int _value)
+        {
+            value += _value;
+        }
     }
 }
